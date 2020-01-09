@@ -1,53 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/login_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="vertical">
         <EditText
             android:id="@+id/login_edit"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="请输入密码"
+            android:inputType="textPassword" />
+        <TextView
+            android:id="@+id/login_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="确定"/>
+            android:textColor="#ff0000"
+            android:text="密码错误!!!"/>
         <Button
             android:id="@+id/login_comfirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="确定"/>
+            android:text="确定" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/unlogin_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="vertical">
         <EditText
             android:id="@+id/unlogin_edit1"
-            android:layout_width="wrap_content"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:hint="初始密码"
-            android:text="确定"/>
+            android:hint="请输入密码"
+            android:inputType="textPassword" />
         <EditText
             android:id="@+id/unlogin_edit2"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="请确认密码"
+            android:inputType="textPassword" />
+        <TextView
+            android:id="@+id/unlogin_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:hint="确认密码"
-            android:text="确定"/>
+            android:textColor="#ff0000"
+            android:text="2次输入密码不一致!!!"/>
         <Button
             android:id="@+id/unlogin_comfirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="确定"/>
+            android:text="确定" />
     </LinearLayout>
 
-</LinearLayout>
+</FrameLayout>
