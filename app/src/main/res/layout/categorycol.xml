@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/categorycol_more_edit"
+            android:src="@drawable/edit"
+            android:layout_width="70dp"
+            android:background="#4cd964"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/categorycol_more_delete"
+            android:src="@drawable/trash"
+            android:layout_width="70dp"
+            android:background="@drawable/red"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@drawable/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/categorycol_name"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:text="类名名称"
+            android:textSize="40sp"/>
+        <ImageView
+            android:src="@drawable/pic_line1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:scaleType="fitXY"/>
+    </LinearLayout>
+</com.daimajia.swipe.SwipeLayout>

@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.litepal.LitePal;
-import org.w3c.dom.Text;
 
 import java.util.Date;
 import java.util.List;
@@ -36,10 +35,11 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        setContentView(R.layout.activity_login);
 
         initRes();
         if(isFirstLogin()){
+            Log.v("initusr", "user shoud init his password");
             unLoginLayout.setVisibility(View.VISIBLE);
             unLoginText.setVisibility(View.INVISIBLE);
             loginLayout.setVisibility(View.INVISIBLE);
@@ -63,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                         defaultUsr.setUsrPasswords(passwords1);
                         defaultUsr.save();
                         Log.v("login","passwords2:=" + defaultUsr.getUsrPasswords());
+                        LoginActivity.this.finish();
                     }
                 }else {
                     unLoginText.setVisibility(View.VISIBLE);
@@ -119,6 +120,7 @@ public class LoginActivity extends AppCompatActivity {
             defaultUsr.setUsrName("default");
             defaultUsr.setUsrPasswords("000000");
             defaultUsr.setCreatTime(new Date().getTime());
+            Log.v("initusr", "user first login, and logindata initial!!!");
             defaultUsr.save();
         }
         for(LoginData item : logindata) {
@@ -127,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
             // 默认用户为"defalut, 000000"
             Log.v("isFirstLogin", "usrName:"+usrName);
             Log.v("isFirstLogin", "usrPasswords:"+usrPasswords);
-            if(usrName.equals(new String("default")) && usrName.equals(new String("000000"))) {
+            if(usrName.equals(new String("default")) && usrPasswords.equals(new String("000000"))) {
                 return true;
             }
         }

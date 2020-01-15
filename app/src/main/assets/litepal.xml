@@ -4,8 +4,8 @@
     <version value="1" />
     <list>
         <mapping class="passwords.shiqian.com.passwords.data.LoginData" />
-        <mapping class="passwords.shiqian.com.passwords.data.passwordsData" />
-        <mapping class="passwords.shiqian.com.passwords.data.PasswordsType" />
+        <mapping class="passwords.shiqian.com.passwords.data.PasswordsData" />
+        <mapping class="passwords.shiqian.com.passwords.data.Category" />
     </list>
     <storage value="internal" />
 </litepal>
