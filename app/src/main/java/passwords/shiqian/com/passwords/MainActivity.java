@@ -2,14 +2,18 @@ package passwords.shiqian.com.passwords;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import android.support.design.widget.FloatingActionButton;
+import android.widget.EditText;
+import android.widget.TabHost;
 
 import org.litepal.LitePal;
 
@@ -79,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                initAdd TaskActinBar(activity);
+                addCategory(activity);
             }
         });
     }
@@ -103,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         categories = LitePal.findAll(Category.class);
         categoriesList.clear();
         for(Category item : categories){
+            Log.v("mainactivity", "category, id:"+item.getId() + ", name:" + item.getTypeName());
             categoriesList.add(item);
         }
     }
@@ -117,8 +122,38 @@ public class MainActivity extends AppCompatActivity {
         actionBar0.setStyle("UPass", R.mipmap.more_white, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
             }
         });
         actionBar0.setNoBack();
+    }
+
+    /**
+     * 增加一个类别
+     * @param activity
+     */
+    private void addCategory(final Activity activity) {
+        //加载布局并初始化组件
+        final View dialogView = LayoutInflater.from(activity).inflate(R.layout.addcategory,null);
+        final EditText categoryname = (EditText) dialogView.findViewById(R.id.addcategory_categoryname);
+        final AlertDialog.Builder layoutDialog = new AlertDialog.Builder(activity);
+        layoutDialog.setView(dialogView);
+        final AlertDialog AlertDialogView = layoutDialog.create();
+        AlertDialogView.show();
+
+        dialogView.findViewById(R.id.addcategory_confirm).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 存入数据库
+                Category item = new Category();
+                item.setTypeName(categoryname.getText().toString());
+                item.setCreatTime(new Date().getTime());
+                item.save();
+                AlertDialogView.dismiss();
+
+                mCategoryAdper.addData(mCategoryAdper.getItemCount(), item);
+                mRecyclerViewList.scrollToPosition(mCategoryAdper.getItemCount());
+            }
+        });
     }
 }

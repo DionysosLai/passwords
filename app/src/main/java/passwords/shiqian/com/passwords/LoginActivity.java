@@ -3,6 +3,8 @@ package passwords.shiqian.com.passwords;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -49,6 +51,111 @@ public class LoginActivity extends AppCompatActivity {
             loginText.setVisibility(View.INVISIBLE);
         }
 
+        dealEdit();
+        dealButton();
+    }
+
+    /**
+     * 初始化资源
+     */
+    public void initRes() {
+        mActivity = this;
+
+        loginLayout = (LinearLayout)findViewById(R.id.login_layout);
+        unLoginLayout = (LinearLayout)findViewById(R.id.unlogin_layout);
+
+        loginEdit = (EditText)findViewById(R.id.login_edit);
+        loginText = (TextView)findViewById(R.id.login_text);
+        loginButton = (Button )findViewById(R.id.login_comfirm);
+        loginButton.setEnabled(false);
+        // 确认界面
+        unLoginEdit1 = (EditText)findViewById(R.id.unlogin_edit1);
+        unLoginEdit2 = (EditText)findViewById(R.id.unlogin_edit2);
+        unLoginText = (TextView)findViewById(R.id.unlogin_text);
+        unLoginButton = (Button)findViewById(R.id.unlogin_comfirm);
+        unLoginButton.setEnabled(false);
+    }
+
+    /**
+     * 处理edit 控件事件
+     */
+    private void dealEdit(){
+        unLoginEdit1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                unLoginText.setVisibility(View.INVISIBLE);
+                String passwords1 = unLoginEdit1.getText().toString();
+                String passwords2 = unLoginEdit2.getText().toString();
+                if(passwords1.length() > 0 && passwords2.length() > 0){
+                    unLoginButton.setEnabled(true);
+                }else {
+                    unLoginButton.setEnabled(false);
+                }
+            }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+//                Log.i("loginEdit", "输入文本之前的状态");
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+//                Log.i("loginEdit", "输入文字后的状态");
+            }
+        });
+
+        unLoginEdit2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                unLoginText.setVisibility(View.INVISIBLE);
+                String passwords1 = unLoginEdit1.getText().toString();
+                String passwords2 = unLoginEdit2.getText().toString();
+                if(passwords1.length() > 0 && passwords2.length() > 0){
+                    unLoginButton.setEnabled(true);
+                }else {
+                    unLoginButton.setEnabled(false);
+                }
+            }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+//                Log.i("loginEdit", "输入文本之前的状态");
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+//                Log.i("loginEdit", "输入文字后的状态");
+            }
+        });
+
+        loginEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                loginText.setVisibility(View.INVISIBLE);
+                String passwords = loginEdit.getText().toString();
+                if(passwords.length() > 0 ){
+                    loginButton.setEnabled(true);
+                }else {
+                    loginButton.setEnabled(false);
+                }
+            }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+//                Log.i("loginEdit", "输入文本之前的状态");
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+//                Log.i("loginEdit", "输入文字后的状态");
+            }
+        });
+    }
+
+    /**
+     * 处理button 事件
+     */
+    private void dealButton() {
         final LoginData defaultUsr = getDefautlUsr();
         unLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,26 +195,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
-    /**
-     * 初始化资源
-     */
-    public void initRes() {
-        mActivity = this;
-
-        loginLayout = (LinearLayout)findViewById(R.id.login_layout);
-        unLoginLayout = (LinearLayout)findViewById(R.id.unlogin_layout);
-
-        loginEdit = (EditText)findViewById(R.id.login_edit);
-        loginText = (TextView)findViewById(R.id.login_text);
-        loginButton = (Button )findViewById(R.id.login_comfirm);
-        // 确认界面
-        unLoginEdit1 = (EditText)findViewById(R.id.unlogin_edit1);
-        unLoginEdit2 = (EditText)findViewById(R.id.unlogin_edit2);
-        unLoginText = (TextView)findViewById(R.id.unlogin_text);
-        unLoginButton = (Button)findViewById(R.id.unlogin_comfirm);
-    }
-
     /**
      *  是否是第一次登陆
      * @return true -- 第一次登陆

@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="增加一个类别"
+        android:layout_gravity="center"
+        android:textSize="30sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="类别名称"/>
+    <EditText
+        android:id="@+id/addcategory_categoryname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="类别名称"/>
+    <Button
+        android:id="@+id/addcategory_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="确定"/>
+
+</LinearLayout>
